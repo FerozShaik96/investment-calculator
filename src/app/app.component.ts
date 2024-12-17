@@ -12,8 +12,4 @@ import { InvestmentResultsComponent } from './investment-results/investment-resu
 })
 export class AppComponent {
   constructor(private user: AppService) {}
-
-  get getAnnualData() {
-    return this.user.getAnnualData();
-  }
 }

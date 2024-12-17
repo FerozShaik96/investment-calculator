@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AppService } from '../ap.service';
 import { AnnualData } from '../app.model';
 import { CurrencyPipe } from '@angular/common';
@@ -11,5 +11,9 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './investment-results.component.css',
 })
 export class InvestmentResultsComponent {
-  @Input({ required: true }) annualData!: AnnualData[];
+  private investMentData = inject(AppService);
+
+  get results() {
+    return this.investMentData.getAnnualData();
+  }
 }
