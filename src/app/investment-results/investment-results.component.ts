@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { AppService } from '../ap.service';
-import { AnnualData } from '../app.model';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
