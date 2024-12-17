@@ -1,7 +1,12 @@
-import { UserData } from './app.model';
+import { UserData, AnnualData } from './app.model';
 import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class AppService {
+  private annualData: AnnualData[] = [];
+
+  getAnnualData() {
+    return this.annualData;
+  }
   calculateInvestmentResults(userData: UserData) {
     const {
       enteredInitialInvestment,
@@ -9,7 +14,7 @@ export class AppService {
       enteredExpectedReturns,
       enteredDuration,
     } = userData;
-    const annualData = [];
+    this.annualData = [];
     let investmentValue = enteredInitialInvestment;
     for (let i = 0; i < enteredDuration; i++) {
       const year = i + 1;
@@ -20,7 +25,7 @@ export class AppService {
         investmentValue -
         enteredAnnualInvestment * year -
         enteredInitialInvestment;
-      annualData.push({
+      this.annualData.push({
         year: year,
         interest: interestEarnedInYear,
         valueEndOfYear: investmentValue,
@@ -30,7 +35,7 @@ export class AppService {
           enteredInitialInvestment + enteredAnnualInvestment * year,
       });
     }
-    console.log(annualData)
-    return annualData;
+    console.log(this.annualData);
+    return this.annualData;
   }
 }
